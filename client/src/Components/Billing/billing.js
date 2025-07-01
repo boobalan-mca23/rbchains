@@ -66,6 +66,10 @@ const Billing = () => {
 
 
   const handleProductSelect = (itemIndex, stockId) => {
+    if (!selectedProduct) {
+      toast.error("Please select a product first!", { autoClose: 2000 });
+      return;
+    }
     setRows([])
     const tempProducts = [...productWeight];
     let customerData;
@@ -78,6 +82,7 @@ const Billing = () => {
       toast.error("Please select a customer first!", { autoClose: 2000 });
       return;
     }
+   
 
     customerData = customers.filter(
       (item) => item.customer_id === selectedCustomer.customer_id
@@ -396,7 +401,7 @@ const Billing = () => {
         } else if (err.response && err.response.status === 500) {
           toast.error("Server error while fetching product weights.", { autoClose: 3000 });
         } else {
-          toast.error("Error fetching product weights.", { autoClose: 3000 });
+          toast.warn("Please Select Product.", { autoClose: 3000 });
         }
         console.error("Error fetching product weights:", err);
       }
