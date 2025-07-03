@@ -1176,7 +1176,7 @@ const Billing = () => {
                 )}
                 <tr>
                   <td className="td" colSpan={5}></td>
-                  <td className="td"><strong>Total</strong>:{receivedPure}</td>
+                  <td className="td"><strong>Total</strong>:{(receivedPure).toFixed(3)}</td>
                   <td className="td" colSpan={2}></td>
                 </tr>
               </tbody>
