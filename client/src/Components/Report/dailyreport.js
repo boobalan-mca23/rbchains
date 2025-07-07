@@ -465,7 +465,7 @@ function DailyReport() {
                               <StyledTableCell >
 
                                 {//Melting After weight
-                                  lotItem.data[lotArrIndex + 1]?.ProcessSteps[1]?.AttributeValues[0]?.value
+                                  lotItem.data[lotArrIndex + 1]?.ProcessSteps[1]?.AttributeValues[0]?.value &&(lotItem.data[lotArrIndex + 1]?.ProcessSteps[1]?.AttributeValues[0]?.value).toFixed(3)
                                 }
                               </StyledTableCell>
 
@@ -514,9 +514,9 @@ function DailyReport() {
                         lotItem.data[7]?.ProcessSteps[1]?.AttributeValues.length >= 1 ? (
                           <StyledTableCell style={{ borderRight: "3px solid black" }}>
                             <b>
-                              {(
-                                lotItem.data[0].ProcessSteps[0].AttributeValues[0].value - handleTotal(lotItem.lotid, 7, 1)
-                              ).toFixed(2)}
+                              {lotItem.data[0]?.ProcessSteps[0]?.AttributeValues[0]?.value &&(
+                                lotItem.data[0]?.ProcessSteps[0]?.AttributeValues[0]?.value - handleTotal(lotItem.lotid, 7, 1)
+                              ).toFixed(3)}
                             </b>
 
                           </StyledTableCell>
@@ -536,14 +536,14 @@ function DailyReport() {
                           </StyledTableCell>
 
                           <StyledTableCell>
-                            {lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key].value}
+                            {lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key].value && (lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key].value).toFixed(3)}
                           </StyledTableCell>
 
                           {key === 0 && (
                             <>
                               <StyledTableCell rowSpan={lotItem.data[2].ProcessSteps[1].AttributeValues.length}>
                                 {
-                                  lotItem.data[2]?.ProcessSteps[2]?.AttributeValues[0]?.value
+                                  lotItem.data[2]?.ProcessSteps[2]?.AttributeValues[0]?.value &&(lotItem.data[2]?.ProcessSteps[2]?.AttributeValues[0]?.value).toFixed(3)
                                 }
                               </StyledTableCell>
                               <StyledTableCell rowSpan={lotItem.data[2].ProcessSteps[1].AttributeValues.length} style={{ borderRight: "3px solid black" }} >
@@ -562,16 +562,16 @@ function DailyReport() {
 
                                   <StyledTableCell>
                                     {
-                                      (lotItem.data[lotArrIndex].ProcessSteps[0].AttributeValues[key].value).toFixed(3)
+                                      lotItem.data[lotArrIndex].ProcessSteps[0].AttributeValues[key].value && (lotItem.data[lotArrIndex].ProcessSteps[0].AttributeValues[key]?.value).toFixed(3)
                                     }
                                   </StyledTableCell>
 
                                   <StyledTableCell>
-                                    {lotItem.data[lotArrIndex]?.ProcessSteps[1]?.AttributeValues[key]?.value}
+                                    {lotItem.data[lotArrIndex]?.ProcessSteps[1]?.AttributeValues[key]?.value && (lotItem.data[lotArrIndex].ProcessSteps[0].AttributeValues[key]?.value).toFixed(3)}
                                   </StyledTableCell>
                                   {lotItem.data[lotArrIndex]?.process_name === "mechine" || lotItem.data[lotArrIndex]?.process_name === "cutting" ? null : (
                                     <StyledTableCell >
-                                      {(lotItem.data[lotArrIndex]?.ProcessSteps[2]?.AttributeValues[key]?.value)}
+                                      {lotItem.data[lotArrIndex]?.ProcessSteps[2]?.AttributeValues[key]?.value && (lotItem.data[lotArrIndex]?.ProcessSteps[2]?.AttributeValues[key]?.value).toFixed(3)}
                                     </StyledTableCell>)}
 
                                   <StyledTableCell style={{ borderRight: lotItem.data[lotArrIndex]?.process_name === "cutting" ? "none" : "3px solid black" }} >
@@ -617,7 +617,7 @@ function DailyReport() {
                             //Item Different
                             lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key]?.value ?
                               (<StyledTableCell style={{ borderRight: "3px solid black" }}>
-                                <p style={{ fontSize: "15px" }}>{lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value - (lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key].value).toFixed(3)}</p>
+                                <p style={{ fontSize: "15px" }}>{lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value && lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value - (lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key]?.value).toFixed(3)}</p>
                               </StyledTableCell>)
                               : (<StyledTableCell style={{ borderRight: "3px solid black" }}></StyledTableCell>)
                           }
@@ -728,7 +728,7 @@ function DailyReport() {
                                   }} />
                               </Grid>
                               <Grid item xs={6}>
-                                <TextField fullWidth label="Loss" value={(lotItem.scarpBox[0].mechine?.totalScarp).toFixed(3)} InputProps={{
+                                <TextField fullWidth label="Loss" value={lotItem.scarpBox[0].mechine?.totalScarp && (lotItem.scarpBox[0].mechine?.totalScarp).toFixed(3)} InputProps={{
                                   style: { fontSize: "12px" }, // this controls the input value font
                                 }}
                                   InputLabelProps={{
@@ -798,7 +798,7 @@ function DailyReport() {
                                   }} />
                               </Grid>
                               <Grid item xs={6}>
-                                <TextField fullWidth value={(lotItem.scarpBox[1].cutting?.cuttingScarp).toFixed(3)} label=" GivenScarpPure" InputProps={{
+                                <TextField fullWidth value={lotItem.scarpBox[1].cutting?.cuttingScarp && (lotItem.scarpBox[1].cutting?.cuttingScarp).toFixed(3)} label=" GivenScarpPure" InputProps={{
                                   style: { fontSize: "12px" },
                                   // this controls the input value font
                                 }}
@@ -807,7 +807,7 @@ function DailyReport() {
                                   }} />
                               </Grid>
                               <Grid item xs={6}>
-                                <TextField fullWidth label="BalanceScarpPure" value={(lotItem.scarpBox[1].cutting?.totalScarp).toFixed(3)} InputProps={{
+                                <TextField fullWidth label="BalanceScarpPure" value={lotItem.scarpBox[1].cutting?.totalScarp && (lotItem.scarpBox[1].cutting?.totalScarp).toFixed(3)} InputProps={{
                                   style: { fontSize: "12px" }, // this controls the input value font
                                 }}
                                   InputLabelProps={{
