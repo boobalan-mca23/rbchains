@@ -1410,7 +1410,7 @@ const ProcessTable = () => {
                         <StyledTableCell>-</StyledTableCell>
                         {
                           lotItem.data[2].ProcessSteps[1].AttributeValues.length !== 0 ? ( 
-                            <StyledTableCell>{"Total:" + handleTotal(lotItem.lotid, 2, 1)}</StyledTableCell>
+                            <StyledTableCell>{"Total:" + (handleTotal(lotItem.lotid, 2, 1)).toFixed(3)}</StyledTableCell>
                           ) : (<StyledTableCell>Total:0</StyledTableCell>)
                         }
                         <StyledTableCell></StyledTableCell>

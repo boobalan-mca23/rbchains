@@ -617,7 +617,7 @@ function DailyReport() {
                             //Item Different
                             lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key]?.value ?
                               (<StyledTableCell style={{ borderRight: "3px solid black" }}>
-                                <p style={{ fontSize: "15px" }}>{lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value && lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value - (lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key]?.value).toFixed(3)}</p>
+                                <p style={{ fontSize: "15px" }}>{lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value && (lotItem.data[2]?.ProcessSteps[1]?.AttributeValues[key]?.value - lotItem.data[7]?.ProcessSteps[1]?.AttributeValues[key]?.value).toFixed(3)}</p>
                               </StyledTableCell>)
                               : (<StyledTableCell style={{ borderRight: "3px solid black" }}></StyledTableCell>)
                           }
@@ -636,7 +636,7 @@ function DailyReport() {
                       <StyledTableCell>-</StyledTableCell>
                       {
                         lotItem.data[2].ProcessSteps[1].AttributeValues.length !== 0 ? ( //weight total
-                          <StyledTableCell>{"Total:" + handleTotal(lotItem.lotid, 2, 1)}</StyledTableCell>
+                          <StyledTableCell>{"Total:" +(handleTotal(lotItem.lotid, 2, 1)).toFixed(3)}</StyledTableCell>
                         ) : (<StyledTableCell>Total:0</StyledTableCell>)
                       }
                       <StyledTableCell></StyledTableCell>
