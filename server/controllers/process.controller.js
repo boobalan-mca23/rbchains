@@ -285,8 +285,6 @@ const saveProcess = async (req, res) => {
                         data: {
                           lot_id: attrValue.lot_id,
                           item_type: "childItem",
-                          
-
                         }
                       })
                       await prisma.masterJewelItemMapper.create({
@@ -308,7 +306,6 @@ const saveProcess = async (req, res) => {
                         },
                       });
                     }
-
                   }
                   else {
                     let childItems = await prisma.item.findMany({  // its create other process child items
@@ -386,7 +383,6 @@ const saveProcess = async (req, res) => {
                         }
                       }
                     }
-
 
                   }
                 }
